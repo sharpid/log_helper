@@ -15,6 +15,12 @@ class TestObject{
 		int i;
 };
 
+class TestObject2{
+	public:
+	//no const
+	std::string ToString(){ return "test";}
+};
+
 TEST(log_helper_test, single_int){
 	EXPECT_STREQ(s.ToString(1).c_str(), "1");
 	EXPECT_STREQ(s.ToString(2).c_str(), "2");
@@ -29,8 +35,10 @@ TEST(log_helper_test, single_float){
 TEST(log_helper_test, single_object){
 	TestObject o1(1);
 	TestObject o2(2);
+	TestObject2 o3;
 	EXPECT_STREQ(s.ToString(o1).c_str(), "test1");
 	EXPECT_STREQ(s.ToString(o2).c_str(), "test2");
+	EXPECT_STREQ(s.ToString(o3).c_str(), "test");
 }
 
 TEST(log_helper_test, vector_float){

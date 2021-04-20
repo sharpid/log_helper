@@ -21,7 +21,7 @@ $(GTEST_BUILD_PATH):
 	cd $(GTEST_BUILD_PATH) && cmake ../ && make
 
 clean:
-	rm test
+	rm testexe
 
 distclean: clean
 	rm -rf $(GTEST_BUILD_PATH)

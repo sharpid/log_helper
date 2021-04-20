@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 
 log_helper::Stringnizer s;
@@ -60,6 +61,11 @@ TEST(log_helper_test, tuple){
 TEST(log_helper_test, complext){
 	std::map<int, std::pair<int, int>> m{{1,{1,1}},{2,{2,2}}};
 	EXPECT_STREQ(s.ToString(m).c_str(), "[{1,{1,1}},{2,{2,2}}]");
+}
+
+TEST(log_helper_test, std_ptr){
+	auto i_ptr = std::make_shared<int>(1);
+	EXPECT_STREQ(s.ToString(i_ptr).c_str(), "1");
 }
 
 

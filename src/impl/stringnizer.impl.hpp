@@ -54,6 +54,12 @@ struct Stringnizer::__to_string<T, Stringnizer::ARG_TYPE::STL_CONTAINER> {
 };
 
 template <typename T>
+struct Stringnizer::__to_string<T, Stringnizer::ARG_TYPE::STL_PTR> {
+  inline std::string operator()(const T& _v) { return __to_string<typename T::element_type>()(*_v) ;}
+  //inline std::string operator()(const T* _v) { return (!_v) ? "null" : operator()(*_v); }
+};
+
+template <typename T>
 struct Stringnizer::__to_string<T, Stringnizer::ARG_TYPE::HAS_CAMEL_TOSTRING> {
   inline std::string operator()(const T& _v) { return const_cast<T*>(&_v)->ToString(); }
   inline std::string operator()(const T* _v) {

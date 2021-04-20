@@ -4,17 +4,17 @@
 GTEST_PATH=thirdparty/googletest/
 GTEST_BUILD_PATH=$(GTEST_PATH)/build
 
-all: test
+all: run
 
-build: test
+build: testexe
 
 run : build
 	#launch test
-	./test
+	./testexe
 	
-test: $(GTEST_BUILD_PATH)
+testexe: $(GTEST_BUILD_PATH)
 	#build test
-	g++ -o test ./sample/test.cpp -Isrc -I$(GTEST_PATH)/googletest/include -L$(GTEST_PATH)/build/googlemock/gtest -lgtest -pthread -std=c++11
+	g++ -o testexe ./test/test.cpp -Isrc -I$(GTEST_PATH)/googletest/include -L$(GTEST_PATH)/build/googlemock/gtest -lgtest -pthread -std=c++11
 	
 $(GTEST_BUILD_PATH):
 	mkdir -p $(GTEST_BUILD_PATH)

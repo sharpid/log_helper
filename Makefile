@@ -1,4 +1,4 @@
-.PHONY: all clean distclean build run
+.PHONY: all clean distclean build run testexe
 .DEFAULT_GOAL:= all
 
 GTEST_PATH=thirdparty/googletest/

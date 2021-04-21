@@ -66,6 +66,7 @@ TEST(log_helper_test, complext){
 TEST(log_helper_test, std_ptr){
 	auto i_ptr = std::make_shared<int>(1);
 	EXPECT_STREQ(s.ToString(i_ptr).c_str(), "1");
+	EXPECT_STREQ(s.ToString(&i_ptr).c_str(), "1");
 }
 
 

@@ -19,6 +19,7 @@ class Stringnizer {
     ARITHMETIC,
     STL_CONTAINER,
     STL_PTR,
+    STL_WEAK_PTR,
     HAS_CAMEL_TOSTRING,
     HAS_SNAKE_TOSTRING,
 
@@ -51,6 +52,7 @@ class Stringnizer {
     return std::is_arithmetic<T>::value ? ARG_TYPE::ARITHMETIC
       : is_stl_container<T>::value ? ARG_TYPE::STL_CONTAINER
       : is_stl_ptr<T>::value ? ARG_TYPE::STL_PTR
+      : is_stl_weak_ptr<T>::value ? ARG_TYPE::STL_WEAK_PTR
       : has_camel_tostring<T>::value ? ARG_TYPE::HAS_CAMEL_TOSTRING
       : has_snake_tostring<T>::value ? ARG_TYPE::HAS_SNAKE_TOSTRING
   #ifdef _USE_GOOGLE_PROTOBUF_

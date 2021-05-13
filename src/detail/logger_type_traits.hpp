@@ -46,8 +46,12 @@ struct is_stl_ptr<std::shared_ptr<T>> : std::true_type{};
 template <typename T>
 struct is_stl_ptr<std::unique_ptr<T>> : std::true_type{};
 
+//std weak ptr type
 template <typename T>
-struct is_stl_ptr<std::weak_ptr<T>> : std::true_type{};
+struct is_stl_weak_ptr : std::false_type{};
+
+template <typename T>
+struct is_stl_weak_ptr<std::weak_ptr<T>> : std::true_type{};
 
 }; //namespace logger
 // clang-format on
